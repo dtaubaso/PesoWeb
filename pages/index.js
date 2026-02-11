@@ -30,7 +30,7 @@ export default function Home() {
       flexDirection: 'column'
     }}>
       <div style={{ flex: 1 }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>PesaURL</h1>
+        <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>HTML Weight</h1>
         
         <input 
           type="text" 
@@ -69,7 +69,6 @@ export default function Home() {
           <div style={{ marginTop: '30px', padding: '20px', border: '1px solid #eaeaea', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
             <p style={{ fontSize: '18px' }}>Peso del HTML: <strong>{result.mb} MB</strong></p>
             
-            {/* Barra de progreso */}
             <div style={{ 
               height: '12px', 
               width: '100%', 
@@ -98,7 +97,6 @@ export default function Home() {
         )}
       </div>
 
-      {/* Tu firma con el link a LinkedIn */}
       <footer style={{ 
         textAlign: 'center', 
         padding: '20px 0', 
