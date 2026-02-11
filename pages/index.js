@@ -21,16 +21,23 @@ export default function Home() {
 
   return (
     <div style={{ 
-      padding: '40px', 
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', 
-      maxWidth: '500px', 
-      margin: 'auto',
       minHeight: '100vh',
       display: 'flex',
-      flexDirection: 'column'
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: '#f5f5f7',
+      padding: '20px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     }}>
-      <div style={{ flex: 1 }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '30px' }}>HTML Weight</h1>
+      <div style={{ 
+        backgroundColor: 'white',
+        padding: '40px', 
+        borderRadius: '16px',
+        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+        maxWidth: '450px', 
+        width: '100%'
+      }}>
+        <h1 style={{ textAlign: 'center', marginBottom: '25px', color: '#1d1d1f' }}>PesaURL</h1>
         
         <input 
           type="text" 
@@ -40,10 +47,12 @@ export default function Home() {
           style={{ 
             width: '100%', 
             padding: '12px', 
-            marginBottom: '10px', 
-            borderRadius: '6px', 
-            border: '1px solid #ccc',
-            fontSize: '16px'
+            marginBottom: '12px', 
+            borderRadius: '8px', 
+            border: '1px solid #d2d2d7',
+            fontSize: '16px',
+            outline: 'none',
+            boxSizing: 'border-box'
           }}
         />
         
@@ -53,66 +62,68 @@ export default function Home() {
           style={{ 
             width: '100%', 
             padding: '12px', 
-            cursor: 'pointer', 
-            backgroundColor: '#0070f3', 
+            cursor: loading ? 'not-allowed' : 'pointer', 
+            backgroundColor: '#0071e3', 
             color: 'white', 
             border: 'none', 
-            borderRadius: '6px',
+            borderRadius: '8px',
             fontSize: '16px',
-            fontWeight: 'bold'
+            fontWeight: '600',
+            transition: 'background-color 0.2s'
           }}
         >
           {loading ? 'Calculando...' : 'Medir Peso HTML'}
         </button>
 
         {result && (
-          <div style={{ marginTop: '30px', padding: '20px', border: '1px solid #eaeaea', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0,0,0,0.05)' }}>
-            <p style={{ fontSize: '18px' }}>Peso del HTML: <strong>{result.mb} MB</strong></p>
+          <div style={{ marginTop: '25px', padding: '15px', backgroundColor: '#fbfbfd', borderRadius: '12px', border: '1px solid #f2f2f2' }}>
+            <p style={{ fontSize: '16px', margin: '0 0 10px 0' }}>Peso del HTML: <strong>{result.mb} MB</strong></p>
             
             <div style={{ 
-              height: '12px', 
+              height: '8px', 
               width: '100%', 
-              backgroundColor: '#eee', 
-              borderRadius: '6px',
-              overflow: 'hidden',
-              marginTop: '10px'
+              backgroundColor: '#e5e5e5', 
+              borderRadius: '4px',
+              overflow: 'hidden'
             }}>
               <div style={{ 
                 height: '100%', 
                 width: `${Math.min((result.mb / 2) * 100, 100)}%`, 
-                backgroundColor: result.mb > 2 ? '#ff4d4d' : '#0070f3',
-                transition: 'width 0.5s ease-in-out'
+                backgroundColor: result.mb > 2 ? '#ff3b30' : '#34c759',
+                transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
               }} />
             </div>
             
             <p style={{ 
-              color: result.mb > 2 ? '#d32f2f' : '#2e7d32', 
-              fontWeight: 'bold', 
-              marginTop: '15px',
-              textAlign: 'center'
+              color: result.mb > 2 ? '#ff3b30' : '#34c759', 
+              fontWeight: '600', 
+              marginTop: '12px',
+              textAlign: 'center',
+              fontSize: '14px'
             }}>
-              {result.mb > 2 ? '⚠️ ¡Atención! Se pasó de los 2 MB' : '✅ ¡Perfecto! Está bajo los 2 MB'}
+              {result.mb > 2 ? '⚠️ Excede el límite de 2 MB' : '✅ Dentro del límite de 2 MB'}
             </p>
           </div>
         )}
-      </div>
 
-      <footer style={{ 
-        textAlign: 'center', 
-        padding: '20px 0', 
-        fontSize: '14px', 
-        color: '#666',
-        borderTop: '1px solid #eee' 
-      }}>
-        Creado por <a 
-          href="https://www.linkedin.com/in/dtaubaso/" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{ color: '#0070f3', textDecoration: 'none', fontWeight: '500' }}
-        >
-          Damian Taubaso
-        </a>
-      </footer>
+        <footer style={{ 
+          textAlign: 'center', 
+          marginTop: '30px', 
+          paddingTop: '20px',
+          fontSize: '13px', 
+          color: '#86868b',
+          borderTop: '1px solid #f2f2f2' 
+        }}>
+          Creado por <a 
+            href="https://www.linkedin.com/in/dtaubaso/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ color: '#0071e3', textDecoration: 'none', fontWeight: '600' }}
+          >
+            Damian Taubaso
+          </a>
+        </footer>
+      </div>
     </div>
   );
 }
