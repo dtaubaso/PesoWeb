@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Head from 'next/head';
 
 export default function Home() {
   const [url, setUrl] = useState('');
@@ -29,15 +30,21 @@ export default function Home() {
       padding: '20px',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif'
     }}>
+      <Head>
+        <title>PesaURL | Medidor de peso HTML</title>
+        <meta name="description" content="Mide el peso del HTML de cualquier web al instante" />
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚖️</text></svg>" />
+      </Head>
+
       <div style={{ 
         backgroundColor: 'white',
         padding: '40px', 
-        borderRadius: '16px',
-        boxShadow: '0 10px 25px rgba(0,0,0,0.1)',
+        borderRadius: '20px',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
         maxWidth: '450px', 
         width: '100%'
       }}>
-        <h1 style={{ textAlign: 'center', marginBottom: '25px', color: '#1d1d1f' }}>PesaURL</h1>
+        <h1 style={{ textAlign: 'center', marginBottom: '25px', color: '#1d1d1f', fontSize: '28px' }}>Cuánto pesa mi URL</h1>
         
         <input 
           type="text" 
@@ -46,13 +53,13 @@ export default function Home() {
           onChange={(e) => setUrl(e.target.value)}
           style={{ 
             width: '100%', 
-            padding: '12px', 
-            marginBottom: '12px', 
-            borderRadius: '8px', 
+            padding: '14px', 
+            marginBottom: '15px', 
+            borderRadius: '10px', 
             border: '1px solid #d2d2d7',
             fontSize: '16px',
-            outline: 'none',
-            boxSizing: 'border-box'
+            boxSizing: 'border-box',
+            outline: 'none'
           }}
         />
         
@@ -61,54 +68,54 @@ export default function Home() {
           disabled={loading} 
           style={{ 
             width: '100%', 
-            padding: '12px', 
+            padding: '14px', 
             cursor: loading ? 'not-allowed' : 'pointer', 
             backgroundColor: '#0071e3', 
             color: 'white', 
             border: 'none', 
-            borderRadius: '8px',
+            borderRadius: '10px',
             fontSize: '16px',
             fontWeight: '600',
-            transition: 'background-color 0.2s'
+            transition: 'all 0.2s ease'
           }}
         >
           {loading ? 'Calculando...' : 'Medir Peso HTML'}
         </button>
 
         {result && (
-          <div style={{ marginTop: '25px', padding: '15px', backgroundColor: '#fbfbfd', borderRadius: '12px', border: '1px solid #f2f2f2' }}>
-            <p style={{ fontSize: '16px', margin: '0 0 10px 0' }}>Peso del HTML: <strong>{result.mb} MB</strong></p>
+          <div style={{ marginTop: '30px', padding: '20px', backgroundColor: '#fbfbfd', borderRadius: '14px', border: '1px solid #f2f2f2' }}>
+            <p style={{ fontSize: '17px', margin: '0 0 12px 0', color: '#1d1d1f' }}>Peso del HTML: <strong>{result.mb} MB</strong></p>
             
             <div style={{ 
-              height: '8px', 
+              height: '10px', 
               width: '100%', 
               backgroundColor: '#e5e5e5', 
-              borderRadius: '4px',
+              borderRadius: '5px',
               overflow: 'hidden'
             }}>
               <div style={{ 
                 height: '100%', 
                 width: `${Math.min((result.mb / 2) * 100, 100)}%`, 
                 backgroundColor: result.mb > 2 ? '#ff3b30' : '#34c759',
-                transition: 'width 0.8s cubic-bezier(0.4, 0, 0.2, 1)'
+                transition: 'width 1s cubic-bezier(0.23, 1, 0.32, 1)'
               }} />
             </div>
             
             <p style={{ 
               color: result.mb > 2 ? '#ff3b30' : '#34c759', 
               fontWeight: '600', 
-              marginTop: '12px',
+              marginTop: '15px',
               textAlign: 'center',
               fontSize: '14px'
             }}>
-              {result.mb > 2 ? '⚠️ Excede el límite de 2 MB' : '✅ Dentro del límite de 2 MB'}
+              {result.mb > 2 ? '⚠️ ¡Atención! Se pasó de los 2 MB' : '✅ ¡Perfecto! Está bajo los 2 MB'}
             </p>
           </div>
         )}
 
         <footer style={{ 
           textAlign: 'center', 
-          marginTop: '30px', 
+          marginTop: '35px', 
           paddingTop: '20px',
           fontSize: '13px', 
           color: '#86868b',
