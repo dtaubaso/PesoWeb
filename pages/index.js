@@ -46,41 +46,44 @@ export default function Home() {
       }}>
         <h1 style={{ textAlign: 'center', marginBottom: '25px', color: '#1d1d1f', fontSize: '28px' }}>Cuánto pesa mi URL</h1>
         
-        <input 
-          type="text" 
-          placeholder="Ej: infobae.com" 
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          style={{ 
-            width: '100%', 
-            padding: '14px', 
-            marginBottom: '15px', 
-            borderRadius: '10px', 
-            border: '1px solid #d2d2d7',
-            fontSize: '16px',
-            boxSizing: 'border-box',
-            outline: 'none'
-          }}
-        />
-        
-        <button 
-          onClick={checkWeight} 
-          disabled={loading} 
-          style={{ 
-            width: '100%', 
-            padding: '14px', 
-            cursor: loading ? 'not-allowed' : 'pointer', 
-            backgroundColor: '#0071e3', 
-            color: 'white', 
-            border: 'none', 
-            borderRadius: '10px',
-            fontSize: '16px',
-            fontWeight: '600',
-            transition: 'all 0.2s ease'
-          }}
-        >
-          {loading ? 'Calculando...' : 'Medir Peso HTML'}
-        </button>
+        {/* Envolvemos en un FORM para habilitar el ENTER */}
+        <form onSubmit={checkWeight}>
+          <input 
+            type="text" 
+            placeholder="Ej: infobae.com" 
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            style={{ 
+              width: '100%', 
+              padding: '14px', 
+              marginBottom: '15px', 
+              borderRadius: '10px', 
+              border: '1px solid #d2d2d7',
+              fontSize: '16px',
+              boxSizing: 'border-box',
+              outline: 'none'
+            }}
+          />
+          
+          <button 
+            type="submit" 
+            disabled={loading} 
+            style={{ 
+              width: '100%', 
+              padding: '14px', 
+              cursor: loading ? 'not-allowed' : 'pointer', 
+              backgroundColor: '#0071e3', 
+              color: 'white', 
+              border: 'none', 
+              borderRadius: '10px',
+              fontSize: '16px',
+              fontWeight: '600',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            {loading ? 'Calculando...' : 'Medir Peso HTML'}
+          </button>
+        </form>
 
         {result && (
           <div style={{ marginTop: '30px', padding: '20px', backgroundColor: '#fbfbfd', borderRadius: '14px', border: '1px solid #f2f2f2' }}>
