@@ -6,10 +6,11 @@ export default function Home() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const checkWeight = async () => {
+  const checkWeight = async (e) => {
     // Evita que la página se recargue al dar Enter
     if (e) e.preventDefault();
     if (!url) return;
+    
     setLoading(true);
     setResult(null);
     try {
